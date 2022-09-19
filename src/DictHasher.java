@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,7 +18,7 @@ public class DictHasher {
         int lines = 0;
         int contador = 0;
         try {
-            Path path = Paths.get("C:\\Users\\bs0076\\IdeaProjects\\DictHasher\\kaonashi14M.txt");
+            Path path = Paths.get("C:\\Users\\bs0076\\IdeaProjects\\untitled\\kaonashi14M.txt");
             lines = (int) Files.lines(path).count();
 
         } catch (IOException f) {
@@ -25,7 +26,7 @@ public class DictHasher {
         }
         String[] strings = new String[lines];
         try {
-            File file = new File("C:\\Users\\bs0076\\IdeaProjects\\DictHasher\\kaonashi14M.txt");
+            File file = new File("C:\\Users\\bs0076\\IdeaProjects\\untitled\\kaonashi14M.txt");
             Scanner myReader = new Scanner(file);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
@@ -38,7 +39,7 @@ public class DictHasher {
             e.printStackTrace();
         }
         for (String string : strings) {
-            string = new String(messageDigest.digest(string.getBytes(StandardCharsets.UTF_8)));
+            System.out.println(string+":" + new BigInteger(1, messageDigest.digest(string.getBytes(StandardCharsets.UTF_8))).toString(16));
         }
 
 
